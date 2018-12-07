@@ -1,4 +1,4 @@
-from cv2 import VideoCapture, resize
+from cv2 import VideoCapture, resize, flip
 import asciify
 
 cam = VideoCapture(0)
@@ -10,7 +10,7 @@ while True:
     s, img = cam.read()
 
     if s:
-        img = resize(img, (240, 87))
+        img = flip(resize(img, (240, 87)), 1)
         asciify.asciify(img)
 
 cam.release()
