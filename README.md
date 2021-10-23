@@ -48,3 +48,5 @@ Run cam.py.
 ```
 
 ![Example](https://github.com/errorport/ASCII_cam/blob/master/example.png)
+![Example 2](https://github.com/errorport/ASCII_cam/blob/master/example_color.png)
+![Example 3](https://github.com/errorport/ASCII_cam/blob/master/example_color_gain.png)
