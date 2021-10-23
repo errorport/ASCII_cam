@@ -47,4 +47,4 @@ Run cam.py.
       ·:×××:
 ```
 
-![Example](https://github.com/errorport/ASCII_cam/example.png)
+![Example](https://github.com/errorport/ASCII_cam/blob/master/example.png)
