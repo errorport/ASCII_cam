@@ -10,7 +10,7 @@ while True:
     s, img = cam.read()
 
     if s:
-        img = flip(resize(img, (240, 87)), 1)
+        img = flip(resize(img, (40, 20)), 1)
         asciify.asciify(img)
 
 cam.release()
