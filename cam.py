@@ -4,6 +4,7 @@ import curses
 
 def main(stdscr):
 	stdscr.clear()
+	curses.curs_set(0)
 
 	cam = VideoCapture(0)
 	cam.set(3, 600)
