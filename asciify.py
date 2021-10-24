@@ -30,7 +30,7 @@ color_prefixes = [
 ]
 
 hue_offset = 1 # empiric
-hue_gain = 1
+hue_gain = 10
 
 indices = [0] * 256
 frames = 0
@@ -72,6 +72,6 @@ def asciify(image):
 			string += "\x1b["+ colorize(hsv[h, w][0]) +"m"
 			string += characters[character_index]
 			string += "\x1b[0m"
-		string += '\n'
+		string += '\n\r'
 	#string = string[:-len(fps_str)-1] + fps_str
 	print(string)

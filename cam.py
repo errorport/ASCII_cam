@@ -1,16 +1,26 @@
 from cv2 import VideoCapture, resize, flip
 import asciify
+import curses
 
-cam = VideoCapture(0)
-cam.set(3, 600)
-cam.set(4, 800)
+def main(stdscr):
+	stdscr.clear()
 
-while True:
+	cam = VideoCapture(0)
+	cam.set(3, 600)
+	cam.set(4, 800)
 
-	s, img = cam.read()
+	while True:
 
-	if s:
-		img = flip(resize(img, (80, 35)), 1)
-		asciify.asciify(img)
+		s, img = cam.read()
 
-cam.release()
+		if s:
+			rows, cols = stdscr.getmaxyx()
+			img = flip(resize(img, (cols, rows)), 1)
+			asciify.asciify(img)
+			stdscr.refresh()
+
+	cam.release()
+
+if __name__ == "__main__":
+	curses.wrapper(main)
+

@@ -1,9 +1,18 @@
 # Ascii-cam
 
+## Features
+
+- Limited character variations.
+- Colorizing by HUE.
+- HUE offset.
+- HUE gain.
+- Automatic resize to terminal size. (curses wrapping)
+
 ## Prerequisites
 
 - numpy
 - opencv-python
+- python compiled with ncurses support
 
 ## Use
 
@@ -50,3 +59,5 @@ Run cam.py.
 ![Example](https://github.com/errorport/ASCII_cam/blob/master/example.png)
 ![Example 2](https://github.com/errorport/ASCII_cam/blob/master/example_color.png)
 ![Example 3](https://github.com/errorport/ASCII_cam/blob/master/example_color_gain.png)
+![Example curses](https://github.com/errorport/ASCII_cam/blob/master/example_curses.png)
+
