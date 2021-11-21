@@ -16,12 +16,20 @@ set(CMAKE_CXX_FLAGS "-O3 -w" )
 set(3RDPARTY_DIR "3rdparty")
 set(ZMQ_3RD_DIR "${3RDPARTY_DIR}/libzmq")
 
-find_package(OpenCV REQUIRED)
-
 add_subdirectory(${ZMQ_3RD_DIR})
+
+find_package(OpenCV REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(exo_video_asciifyer asciifyer.cpp)
+find_package(OpenMP)
+if (OPENMP_FOUND)
+	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+	set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+
+include_directories(".")
+add_executable(exo_video_asciifyer asciifyer.cpp config.hpp)
 
 target_link_libraries(exo_video_asciifyer ${OpenCV_LIBS})
