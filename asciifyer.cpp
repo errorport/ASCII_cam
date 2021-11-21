@@ -44,13 +44,19 @@ int main(void) {
 				cv::resize(input_frame, resized_frame, cv::Size(w.ws_col, w.ws_row));
 				cv:: normalize(resized_frame, resized_frame, 255, 0, cv::NORM_MINMAX, -1, cv::noArray());
 				cv::cvtColor(resized_frame, hsv_frame, cv::COLOR_BGR2HSV);
+				wchar_t table[MAX_ROWS][LINE_LENGTH];
+				#pragma omp parallel for
 				for(size_t hidx = 0; hidx < hsv_frame.rows; hidx++) {
 					wchar_t line_str[LINE_LENGTH];
 					uint16_t ch_idx = 0;
 					for(size_t widx = 0; widx < hsv_frame.cols; widx++) {
 						insert_character(line_str, &ch_idx, hsv_frame.at<cv::Vec3b>(hidx, widx));
 					}
-					wprintf(L"\n\r%ls", line_str);
+					//memcpy(table[hidx], line_str, LINE_LENGTH * sizeof(wchar_t));
+					swprintf(table[hidx], LINE_LENGTH, L"%ls\n\r", line_str);
+				}
+				for(size_t hidx = 0; hidx < hsv_frame.rows; hidx++) {
+					wprintf(L"%ls", table[hidx]);
 				}
 			}
 			t_end = chrono::high_resolution_clock::now();
