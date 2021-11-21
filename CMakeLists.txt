@@ -19,7 +19,7 @@ find_package(OpenCV REQUIRED)
 
 add_subdirectory(${ZMQ_3RD_DIR})
 
-include_directories("${OpenCV_LIBS}/include")
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})

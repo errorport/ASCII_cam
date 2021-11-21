@@ -1,9 +1,9 @@
-#include <opencv/cv.h>
+#include <opencv2/core.hpp>
 #include <ncurses.h>
-#include <strint.h>
+#include <stdint.h>
 #include <stdlib.h>
 
-uint8_t main() {
+int main() {
 	return 0;
 }
 
