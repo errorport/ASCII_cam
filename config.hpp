@@ -3,14 +3,14 @@
 
 #include <stdint.h>
 
-extern uint8_t hue_offset	= 1
-extern uint8_t hue_gain		= 10
+extern uint8_t hue_offset	= 1;
+extern uint8_t hue_gain		= 10;
 
 extern char characters[9] = {'█', '▓', '▒', '░', '•', '×', ':', '·', ' '};
 
 extern uint8_t brightness_steps[9] = {0, 20, 40, 60, 80, 100, 120, 140, 255};
 
-extern uint8_t color_prefixes = {
+extern uint8_t color_prefixes[6] = {
 	31, // RED
 	33, // YELLOW
 	32, // GREEN
