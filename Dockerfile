@@ -10,3 +10,5 @@ RUN apt-get install -y \
 	binutils \
 	ffmpeg \
 	libopencv-dev
+RUN apt-get install -y \
+	libjack-dev

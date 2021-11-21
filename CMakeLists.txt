@@ -29,6 +29,8 @@ if (OPENMP_FOUND)
 	set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
+find_package(Jack REQUIRED)
+
 include_directories(".")
 add_executable(exo_video_asciifyer asciifyer.cpp config.hpp)
 
