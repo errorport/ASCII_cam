@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 # Andrew Webb 02/2016
-
-'''
-Script to create high resolution ascii art from images.
-Usage: python ascii.py <image-filename> <horizontal-resolution>
-'''
+# Gergely Bencsik 10/2021
 
 import numpy as np
 import cv2
