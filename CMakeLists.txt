@@ -12,7 +12,7 @@ if(CCACHE_FOUND)
 	set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
 endif(CCACHE_FOUND)
 
-set(CMAKE_CXX_FLAGS "-O3 -w -std=c++11")
+set(CMAKE_CXX_FLAGS "-O3 -w -std=c++11 -ggdb")
 set(3RDPARTY_DIR "3rdparty")
 set(ZMQ_3RD_DIR "${3RDPARTY_DIR}/libzmq")
 

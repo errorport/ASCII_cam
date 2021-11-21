@@ -31,6 +31,7 @@ int main(void) {
 	if(cap.isOpened()){
 		cv::Mat input_frame;
 		cv::Mat resized_frame;
+		cv::Mat hsv_frame;
 		struct winsize w;
 		chrono::_V2::system_clock::time_point t_start;
 		chrono::_V2::system_clock::time_point t_end;
@@ -42,12 +43,12 @@ int main(void) {
 				get_winsize(&w);
 				cv::resize(input_frame, resized_frame, cv::Size(w.ws_col, w.ws_row));
 				cv:: normalize(resized_frame, resized_frame, 255, 0, cv::NORM_MINMAX, -1, cv::noArray());
-				cv::cvtColor(resized_frame, resized_frame, cv::COLOR_BGR2HSV);
-				for(size_t hidx = 0; hidx < resized_frame.rows; hidx++) {
+				cv::cvtColor(resized_frame, hsv_frame, cv::COLOR_BGR2HSV);
+				for(size_t hidx = 0; hidx < hsv_frame.rows; hidx++) {
 					wchar_t line_str[LINE_LENGTH];
 					uint16_t ch_idx = 0;
-					for(size_t widx = 0; widx < resized_frame.cols; widx++) {
-						insert_character(line_str, &ch_idx, resized_frame.at<cv::Vec3b>(hidx, widx)[1]);
+					for(size_t widx = 0; widx < hsv_frame.cols; widx++) {
+						insert_character(line_str, &ch_idx, hsv_frame.at<cv::Vec3b>(hidx, widx));
 					}
 					wprintf(L"\n\r%ls", line_str);
 				}
@@ -69,13 +70,13 @@ void get_winsize(winsize* w) {
 
 uint8_t colorize(uint8_t hue_value) {
 	return color_prefixes[
-		int((hue_offset + (hue_value * COLOR_COUNT * hue_gain) / 360) % COLOR_COUNT)
+		int(hue_offset + (hue_value * COLOR_COUNT * hue_gain) / 179) % COLOR_COUNT
 	];
 }
 
 wchar_t asciify(uint8_t value) {
 	for(size_t step_idx = 0; step_idx < STEP_COUNT; step_idx++) {
-		if(value <= brightness_steps[step_idx]) {
+		if(value >= brightness_steps[step_idx]) {
 			return characters[step_idx];
 		}
 	}
@@ -86,6 +87,6 @@ void insert_character(wchar_t* line_str, uint16_t* ch_idx, cv::Vec3b pixel) {
 	*ch_idx += swprintf(
 		line_str + *ch_idx
 		, CHAR_LENGTH
-		, L"\x1b[%dm%lc\x1b[0m", colorize(pixel[1]), asciify(pixel[0])
+		, L"\x1b[%dm%lc\x1b[0m", colorize(pixel[0]), asciify(pixel[2])
 	);
 }
