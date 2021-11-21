@@ -12,6 +12,7 @@ if(CCACHE_FOUND)
 	set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
 endif(CCACHE_FOUND)
 
+set(CMAKE_CXX_FLAGS "-O3 -w" )
 set(3RDPARTY_DIR "3rdparty")
 set(ZMQ_3RD_DIR "${3RDPARTY_DIR}/libzmq")
 
@@ -20,9 +21,6 @@ find_package(OpenCV REQUIRED)
 add_subdirectory(${ZMQ_3RD_DIR})
 
 include_directories(${OpenCV_INCLUDE_DIRS})
-
-find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIR})
 
 add_executable(exo_video_asciifyer asciifyer.cpp)
 
