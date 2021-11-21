@@ -42,7 +42,7 @@ int main(void) {
 			if (!input_frame.empty()){
 				get_winsize(&w);
 				cv::resize(input_frame, resized_frame, cv::Size(w.ws_col, w.ws_row));
-				cv:: normalize(resized_frame, resized_frame, 255, 0, cv::NORM_MINMAX, -1, cv::noArray());
+				cv::normalize(resized_frame, resized_frame, 255, 0, cv::NORM_MINMAX, -1, cv::noArray());
 				cv::cvtColor(resized_frame, hsv_frame, cv::COLOR_BGR2HSV);
 				wchar_t table[MAX_ROWS][LINE_LENGTH];
 				#pragma omp parallel for
