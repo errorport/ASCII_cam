@@ -52,11 +52,11 @@ int main(void) {
 					for(size_t widx = 0; widx < hsv_frame.cols; widx++) {
 						insert_character(line_str, &ch_idx, hsv_frame.at<cv::Vec3b>(hidx, widx));
 					}
-					//memcpy(table[hidx], line_str, LINE_LENGTH * sizeof(wchar_t));
-					swprintf(table[hidx], LINE_LENGTH, L"%ls\n\r", line_str);
+					memcpy(table[hidx], line_str, ch_idx * sizeof(wchar_t));
+					//swprintf(table[hidx], LINE_LENGTH, L"%ls\n\r", line_str);
 				}
 				for(size_t hidx = 0; hidx < hsv_frame.rows; hidx++) {
-					wprintf(L"%ls", table[hidx]);
+					wprintf(L"%ls\n\r", table[hidx]);
 				}
 			}
 			t_end = chrono::high_resolution_clock::now();
