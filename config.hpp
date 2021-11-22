@@ -11,8 +11,9 @@
 #define LINE_LENGTH 2048
 #define CHAR_LENGTH 16
 
-extern uint8_t hue_offset	= 3;
+extern uint8_t hue_offset	= 4;
 extern uint8_t hue_gain		= 2;
+extern uint8_t hue_max		= 360;
 
 extern wchar_t characters[STEP_COUNT] = {L'█', L'▓', L'▒', L'░', L'•', L'×', L':', L'·', L' '};
 

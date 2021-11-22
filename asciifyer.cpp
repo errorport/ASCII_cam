@@ -56,7 +56,7 @@ int main(void) {
 					//swprintf(table[hidx], LINE_LENGTH, L"%ls\n\r", line_str);
 				}
 				for(size_t hidx = 0; hidx < hsv_frame.rows; hidx++) {
-					wprintf(L"%ls\n\r", table[hidx]);
+					wprintf(L"%ls\n", table[hidx]);
 				}
 			}
 			t_end = chrono::high_resolution_clock::now();
@@ -76,7 +76,7 @@ void get_winsize(winsize* w) {
 
 uint8_t colorize(uint8_t hue_value) {
 	return color_prefixes[
-		int(hue_offset + (hue_value * COLOR_COUNT * hue_gain) / 179) % COLOR_COUNT
+		int(hue_offset + (hue_value * COLOR_COUNT * hue_gain) / hue_max) % COLOR_COUNT
 	];
 }
 
